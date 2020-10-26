@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 	<head>
+
+</script>
 	 	<title>게시판</title>
 	 		 	<style type="text/css">
 			li {list-style: none; float: left; padding: 6px;}
@@ -73,5 +75,8 @@
     </c:if> 
   </ul>
 </div>
+			<hr />
 	</body>
+<!-- jquery를 불러옵니다. jquery.com download 페이지를 참조해주세요 -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </html>
