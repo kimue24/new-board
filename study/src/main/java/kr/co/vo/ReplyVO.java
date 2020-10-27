@@ -35,6 +35,7 @@ public class ReplyVO {
 	}
 	public Date getRegdate() {
 		return regdate;
+	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
