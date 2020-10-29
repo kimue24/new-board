@@ -5,8 +5,8 @@
 <head>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-	
+
+
 <title>게시판</title>
 </head>
 
@@ -47,6 +47,29 @@
 		 	 formObj.attr("action", "/board/replyWrite");
  		 	 formObj.submit();
 			});
+			
+			//댓글 수정 View
+			$(".replyUpdateBtn").on("click", function(){
+				location.href = "/board/replyUpdateView?bno=${read.bno}"
+								+ "&page=${scri.page}"
+								+ "&perPageNum=${scri.perPageNum}"
+								+ "&searchType=${scri.searchType}"
+								+ "&keyword=${scri.keyword}"
+								+ "&rno="+$(this).attr("data-rno");
+			});
+					
+		//댓글 삭제 View
+			$(".replyDeleteBtn").on("click", function(){
+				location.href = "/board/replyDeleteView?bno=${read.bno}"
+					+ "&page=${scri.page}"
+					+ "&perPageNum=${scri.perPageNum}"
+					+ "&searchType=${scri.searchType}"
+					+ "&keyword=${scri.keyword}"
+					+ "&rno="+$(this).attr("data-rno");
+			});
+			
+			
+			
 			// 취소
 			$(".list_btn").on("click", function(){
 				
@@ -114,12 +137,18 @@
 					<c:forEach items="${replyList}" var="replyList">
 						<li>
 							<p>
-								작성자 : ${replyList.writer}<br /> 작성 날짜 :
-								<fmt:formatDate value="${replyList.regdate}"
+								작성자 : ${replyList.writer}<br /> 
+								작성 날짜 : <fmt:formatDate value="${replyList.regdate}"
 									pattern="yyyy-MM-dd" />
 							</p>
 
 							<p>${replyList.content}</p>
+							<div>
+								<button type="button" class="replyUpdateBtn"
+									data-rno="${replyList.rno}">수정</button>
+								<button type="button" class="replyDeleteBtn"
+									data-rno="${replyList.rno}">삭제</button>
+							</div>
 						</li>
 					</c:forEach>
 				</ol>

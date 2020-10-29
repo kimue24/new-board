@@ -91,46 +91,103 @@ public class BoardController {
 	
 	// 게시판 수정
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
+	public String update(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr)
+			throws Exception {
 		logger.info("update");
-		
+
 		service.update(boardVO);
-		
+
 		rttr.addAttribute("page", scri.getPage());
 		rttr.addAttribute("perPageNum", scri.getPerPageNum());
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
-		
+
 		return "redirect:/board/list";
 	}
 
 	// 게시판 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
+	public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr)
+			throws Exception {
 		logger.info("delete");
-		
+
 		service.delete(boardVO.getBno());
-		
+
 		rttr.addAttribute("page", scri.getPage());
 		rttr.addAttribute("perPageNum", scri.getPerPageNum());
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
-		
+
 		return "redirect:/board/list";
 	}
-	//댓글 작성
-	@RequestMapping(value="/replyWrite", method = RequestMethod.POST)
+
+	// 댓글 작성
+	@RequestMapping(value = "/replyWrite", method = RequestMethod.POST)
 	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");
-		
+
 		replyService.writeReply(vo);
-		
+
 		rttr.addAttribute("bno", vo.getBno());
 		rttr.addAttribute("page", scri.getPage());
 		rttr.addAttribute("perPageNum", scri.getPerPageNum());
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
-		
+
+		return "redirect:/board/readView";
+	}
+
+	// 댓글 수정 GET
+	@RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET)
+	public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+		logger.info("reply Write");
+
+		model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
+		model.addAttribute("scri", scri);
+
+		return "board/replyUpdateView";
+	}
+
+	// 댓글 수정 POST
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply Write");
+
+		replyService.updateReply(vo);
+
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+
+		return "redirect:/board/readView";
+	}
+
+	// 댓글 삭제 GET
+	@RequestMapping(value = "/replyDeleteView", method = RequestMethod.GET)
+	public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+		logger.info("reply Write");
+
+		model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
+		model.addAttribute("scri", scri);
+
+		return "board/replyDeleteView";
+	}
+
+	// 댓글 삭제
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
+	public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply Write");
+
+		replyService.deleteReply(vo);
+
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+
 		return "redirect:/board/readView";
 	}
 
