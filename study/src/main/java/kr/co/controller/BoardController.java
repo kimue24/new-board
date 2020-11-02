@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.service.BoardService;
 import kr.co.service.ReplyService;
 import kr.co.vo.BoardVO;
-import kr.co.vo.Criteria;
 import kr.co.vo.PageMaker;
 import kr.co.vo.ReplyVO;
 import kr.co.vo.SearchCriteria;
@@ -33,14 +32,14 @@ public class BoardController {
 	@Inject
 	ReplyService replyService;
 	
-	// ê²Œì‹œíŒ ê¸€ ì‘ì„± í™”ë©´
+	// °Ô½ÃÆÇ ±Û ÀÛ¼º È­¸é
 	@RequestMapping(value = "/board/writeView", method = RequestMethod.GET)
 	public void writeView() throws Exception{
 		logger.info("writeView");
 		
 	}
 	
-	// ê²Œì‹œíŒ ê¸€ ì‘ì„±
+	// °Ô½ÃÆÇ ±Û ÀÛ¼º
 	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
 	public String write(BoardVO boardVO) throws Exception{
 		logger.info("write");
@@ -49,7 +48,7 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
-	// ê²Œì‹œíŒ ëª©ë¡ ì¡°íšŒ
+	// °Ô½ÃÆÇ ¸ñ·Ï Á¶È¸
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 		logger.info("list");
@@ -65,7 +64,7 @@ public class BoardController {
 		return "board/list";
 		
 	}
-	// ê²Œì‹œíŒ ì¡°íšŒ
+	// °Ô½ÃÆÇ Á¶È¸
 	@RequestMapping(value = "/readView", method = RequestMethod.GET)
 	public String read(BoardVO boardVO,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		logger.info("read");
@@ -78,7 +77,7 @@ public class BoardController {
 		
 		return "board/readView";
 	}
-	// ê²Œì‹œíŒ ìˆ˜ì •ë·°
+	// °Ô½ÃÆÇ ¼öÁ¤ºä
 	@RequestMapping(value = "/updateView", method = RequestMethod.GET)
 	public String updateView(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		logger.info("updateView");
@@ -89,7 +88,7 @@ public class BoardController {
 		return "board/updateView";
 	}
 	
-	// ê²Œì‹œíŒ ìˆ˜ì •
+	// °Ô½ÃÆÇ ¼öÁ¤
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr)
 			throws Exception {
@@ -105,7 +104,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	// ê²Œì‹œíŒ ì‚­ì œ
+	// °Ô½ÃÆÇ »èÁ¦
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr)
 			throws Exception {
@@ -121,7 +120,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	// ëŒ“ê¸€ ì‘ì„±
+	// ´ñ±Û ÀÛ¼º
 	@RequestMapping(value = "/replyWrite", method = RequestMethod.POST)
 	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");
@@ -137,7 +136,7 @@ public class BoardController {
 		return "redirect:/board/readView";
 	}
 
-	// ëŒ“ê¸€ ìˆ˜ì • GET
+	// ´ñ±Û ¼öÁ¤ GET
 	@RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET)
 	public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		logger.info("reply Write");
@@ -148,7 +147,7 @@ public class BoardController {
 		return "board/replyUpdateView";
 	}
 
-	// ëŒ“ê¸€ ìˆ˜ì • POST
+	// ´ñ±Û ¼öÁ¤ POST
 	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
 	public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");
@@ -164,7 +163,7 @@ public class BoardController {
 		return "redirect:/board/readView";
 	}
 
-	// ëŒ“ê¸€ ì‚­ì œ GET
+	// ´ñ±Û »èÁ¦ GET
 	@RequestMapping(value = "/replyDeleteView", method = RequestMethod.GET)
 	public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		logger.info("reply Write");
@@ -175,7 +174,7 @@ public class BoardController {
 		return "board/replyDeleteView";
 	}
 
-	// ëŒ“ê¸€ ì‚­ì œ
+	// ´ñ±Û »èÁ¦
 	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
 	public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");

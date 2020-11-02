@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import kr.co.dao.BoardDAO;
 import kr.co.vo.BoardVO;
-import kr.co.vo.Criteria;
 import kr.co.vo.SearchCriteria;
 
 @Service
@@ -18,24 +17,24 @@ public class BoardServiceImpl implements BoardService {
 	@Inject
 	private BoardDAO dao;
 	
-	// ê²Œì‹œê¸€ ì‘ì„±
+	// °Ô½Ã±Û ÀÛ¼º
 	@Override
 	public void write(BoardVO boardVO) throws Exception {
 		dao.write(boardVO);
 	}
-	// ê²Œì‹œë¬¼ ëª©ë¡ ì¡°íšŒ
+	// °Ô½Ã¹° ¸ñ·Ï Á¶È¸
 	@Override
 	public List<BoardVO> list(SearchCriteria scri) throws Exception {
 
 		return dao.list(scri);
 	}
 	
-	//ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
+	//°Ô½Ã¹° ÃÑ °¹¼ö
 	@Override
 	public int listCount(SearchCriteria scri) throws Exception {
 		return dao.listCount(scri);
 	}
-	// ê²Œì‹œë¬¼ ëª©ë¡ ì¡°íšŒ
+	// °Ô½Ã¹° ¸ñ·Ï Á¶È¸
 	@Override
 	public BoardVO read(int bno) throws Exception {
 
