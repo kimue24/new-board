@@ -30,4 +30,11 @@ public class MemberDAOImpl implements MemberDAO {
 		// 아이디가 memberUpdate인 쿼리에 파라미터들을 넣어줍니다.
 		sql.update("memberMapper.memberUpdate", vo); 
 	}
+	//업데이트와 마찬가지 흐름
+	@Override
+	public void memberDelete(MemberVO vo) throws Exception {
+		sql.delete("memberMapper.memberDelete", vo);
+	}
+	
+	
 }

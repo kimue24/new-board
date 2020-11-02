@@ -10,5 +10,6 @@ public interface MemberService {
 	
 	public void memberUpdate(MemberVO vo) throws Exception;
 	
+	public void memberDelete(MemberVO vo) throws Exception;
 	
 }
