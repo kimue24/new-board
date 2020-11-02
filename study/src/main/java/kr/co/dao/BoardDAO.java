@@ -3,7 +3,6 @@ package kr.co.dao;
 import java.util.List;
 
 import kr.co.vo.BoardVO;
-import kr.co.vo.Criteria;
 import kr.co.vo.SearchCriteria;
 
 public interface BoardDAO {
