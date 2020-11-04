@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javafx.scene.control.Alert;
 import kr.co.service.MemberService;
 import kr.co.vo.MemberVO;
 
@@ -31,16 +30,6 @@ public class MemberController {
 		logger.info("get register");
 	}
 	
-	// 회원가입 post
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postRegister(MemberVO vo) throws Exception {
-		logger.info("post register");
-		
-		
-		service.register(vo);
-		
-		return null;
-	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
@@ -112,6 +101,33 @@ public class MemberController {
 	public int passChk(MemberVO vo) throws Exception {
 		int result = service.passChk(vo);
 		return result;
+	}
+	
+	// 아이디 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(MemberVO vo) throws Exception {
+		int result = service.idChk(vo);
+		return result;
+	}
+	
+	// 회원가입 post
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String postRegister(MemberVO vo) throws Exception {
+		logger.info("post register");
+		int result = service.idChk(vo);
+		try {
+			if(result == 1) {
+				return "/member/register";
+			}else if (result ==0) {
+				service.register(vo);
+			}
+			//입력된 아이디가 존재한다면 -> 다시 회원가입 페이지 , 존재하지않는다면 -> register
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new RuntimeException();
+		}
+		return "redirect:/";
 	}
 	
 }

@@ -14,4 +14,6 @@ public interface MemberService {
 	
 	public int passChk(MemberVO vo) throws Exception;
 	
+	public int idChk(MemberVO vo) throws Exception;
+	
 }
