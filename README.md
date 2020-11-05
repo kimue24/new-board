@@ -1,5 +1,5 @@
-# new-board
-첫번째 게시판이 망하고 두번째 
+# 프로젝트 new-board ( 완 )
+첫번째 게시판이 망하고 두번째 프로젝트 - https://melonpeach.tistory.com/ 참고하여 만들었습니다.
 
 
 //업데이트 ver 기록
