@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 	<head>
 		<!-- 합쳐지고 최소화된 최신 CSS -->
@@ -27,7 +28,7 @@
 				<form role="form" method="get">
 					<table class="table table-hover">
 						<thead>
-							<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th></tr>
+							<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th></tr>
 						</thead>
 						
 						<c:forEach items="${list}" var = "list">
@@ -38,6 +39,7 @@
 								</td>
 								<td><c:out value="${list.writer}" /></td>
 								<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd"/></td>
+								<td><c:out value="${list.hit}" /></td>
 							</tr>
 						</c:forEach>
 						
