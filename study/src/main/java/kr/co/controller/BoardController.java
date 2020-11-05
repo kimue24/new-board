@@ -1,6 +1,7 @@
 package kr.co.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -64,17 +65,19 @@ public class BoardController {
 		return "board/list";
 		
 	}
-	// �Խ��� ��ȸ
+	// 게시판 조회
 	@RequestMapping(value = "/readView", method = RequestMethod.GET)
-	public String read(BoardVO boardVO,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
+	public String read(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
 		logger.info("read");
-		
+
 		model.addAttribute("read", service.read(boardVO.getBno()));
-		model.addAttribute("scri, scri");
-		
+		model.addAttribute("scri", scri);
+
 		List<ReplyVO> replyList = replyService.readReply(boardVO.getBno());
 		model.addAttribute("replyList", replyList);
-		
+
+		List<Map<String, Object>> fileList = service.selectFileList(boardVO.getBno());
+		model.addAttribute("file", fileList);
 		return "board/readView";
 	}
 	// �Խ��� ������
