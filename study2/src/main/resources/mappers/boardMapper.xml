@@ -25,5 +25,17 @@
 		FROM MP_BOARD
 		ORDER BY BNO DESC
 	</select>
+
+	<!-- 해당 게시물 조회 -->
+	<select id="read" parameterType='int'
+		resultType="kr.co.vo.BoardVO">
+		SELECT BNO
+		, TITLE
+		, CONTENT
+		, WRITER
+		, REGDATE
+		FROM MP_BOARD
+		WHERE BNO = #{bno}
+	</select>
    
 </mapper>
