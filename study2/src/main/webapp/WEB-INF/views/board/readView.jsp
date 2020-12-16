@@ -3,7 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 	<head>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+		
+		
+		</script>
 	 	
 	 	<title>게시판</title>
 	</head>
@@ -32,10 +35,12 @@
 				}
 			})
 			
-			// 취소
-			$(".list_btn").on("click", function(){
-				
-				location.href = "/board/list";
+		// 목록
+		$(".list_btn").on("click", function(){
+
+		location.href = "/board/list?page=${scri.page}"
+		+"&perPageNum=${scri.perPageNum}"
+		+"&searchType=${scri.searchType}&keyword=${scri.keyword}";
 			})
 		})
 	</script>
@@ -54,7 +59,16 @@
 			<hr />
 			
 			<section id="container">
-				<form name="readForm" role="form" method="post">
+			<form name="readForm" role="form" method="post">
+				<input type="hidden" id="bno" name="bno" value="${read.bno}" /> <input
+					type="hidden" id="page" name="page" value="${scri.page}"> <input
+					type="hidden" id="perPageNum" name="perPageNum"
+					value="${scri.perPageNum}"> <input type="hidden"
+					id="searchType" name="searchType" value="${scri.searchType}">
+				<input type="hidden" id="keyword" name="keyword"
+					value="${scri.keyword}">
+			</form>
+			<form name="readForm" role="form" method="post">
 					<input type="hidden" id="bno" name="bno" value="${read.bno}" />
 				</form>
 				<table>
