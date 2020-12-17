@@ -7,7 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.vo.BoardVO;
-import kr.co.vo.Criteria;
 import kr.co.vo.SearchCriteria;
 
 

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import kr.co.dao.BoardDAO;
 import kr.co.vo.BoardVO;
-import kr.co.vo.Criteria;
 import kr.co.vo.SearchCriteria;
 
 @Service

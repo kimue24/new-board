@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.service.BoardService;
 import kr.co.service.ReplyService;
 import kr.co.vo.BoardVO;
-import kr.co.vo.Criteria;
 import kr.co.vo.PageMaker;
 import kr.co.vo.ReplyVO;
 import kr.co.vo.SearchCriteria;
@@ -121,4 +120,19 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
+	//댓글 작성
+	@RequestMapping(value="replyWrite", method = RequestMethod.POST)
+	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply Write");
+		
+		replyService.writeReply(vo);
+		
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		
+		return "redirect:/board/readView";
+	}
 }
