@@ -44,7 +44,7 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	// 게시물 삭제
 	public void delete(int bno) throws Exception {
-		sqlSession.delete("board)
+		sqlSession.delete("boardMapper.delete",bno);
 	}
 
 }
