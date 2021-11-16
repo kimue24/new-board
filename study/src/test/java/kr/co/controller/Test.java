@@ -21,15 +21,12 @@ public class Test {
     @Inject
     private SqlSessionFactory sqlFactory;
  
-    @org.junit.Test
-    public void test() throws Exception{
-
-        try(Connection conn = ds.getConnection()){
-            System.out.println(conn);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-    }
+	/*
+	 * @org.junit.Test public void test() throws Exception{
+	 * 
+	 * try(Connection conn = ds.getConnection()){ System.out.println(conn); }
+	 * catch(Exception e){ e.printStackTrace(); } }
+	 */
    
   
     @org.junit.Test
@@ -41,10 +38,10 @@ public class Test {
     @org.junit.Test
     public void sessionTest() throws Exception{
       
-        try(SqlSession session = sqlFactory.openSession()) {
+     /*   try(SqlSession session = sqlFactory.openSession()) {
             System.out.println(session);
         }catch(Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
