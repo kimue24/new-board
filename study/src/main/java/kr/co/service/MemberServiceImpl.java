@@ -20,6 +20,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 public MemberVO login(MemberVO vo) throws Exception {
 	return dao.login(vo);
-}
+	}
+	
+	@Override
+	public void memberUpdate(MemberVO vo) throws Exception {
+		//받은 vo를 DAO로 보내줍니다.
+		dao.memberUpdate(vo);
+	}
 
 }
