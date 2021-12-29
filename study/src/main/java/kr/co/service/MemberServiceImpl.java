@@ -2,6 +2,7 @@ package kr.co.service;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.springframework.stereotype.Service;
 
 import kr.co.dao.MemberDAO;
@@ -39,5 +40,11 @@ public class MemberServiceImpl implements MemberService {
 	public int passChk(MemberVO vo) throws Exception {
 		int result = dao.passChk(vo);
 		return result;		
+	}
+	//아이디중복체크
+	@Override
+	public int idChk(MemberVO vo) throws Exception {
+		int result = dao.idChk(vo);
+		return result;
 	}
 }
