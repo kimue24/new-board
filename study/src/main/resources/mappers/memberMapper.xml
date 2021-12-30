@@ -34,7 +34,7 @@
 	<delete id="memberDelete">
 		DELETE FROM MP_MEMBER
 		WHERE USERID = #{userId}
-		AND USERPASS = #{userPass}
+		<!-- AND USERPASS = #{userPass} -->
 	</delete>
 
 	<!-- 패스워드 체크 -->
